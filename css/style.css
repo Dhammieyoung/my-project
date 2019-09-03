@@ -1,0 +1,86 @@
+body{
+    background-image: url("../img/LAT.JPG");
+    background-repeat: no-repeat;
+    padding: 0%;
+    margin: 0%;
+    background-size: 100%;
+    
+}
+
+img{
+   margin-top: 4%;
+   margin-left: 7%;
+
+}
+
+
+ul{
+    
+    padding: 0%;
+    margin-left: 7%;
+    float: right;
+    margin-top: -40px;
+   
+}
+li{
+    float: left;
+    padding: 0%;
+    margin-left: 10%;
+    margin:30px;
+    margin-top: -30px;
+    
+}
+
+ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+ul button a{
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+ul li ul li{
+    display: none;
+}
+ul li:hover ul li{
+    display:block; 
+}
+div{
+    text-align: center;
+}
+h1{
+    text-align: center;
+    margin-top: 15%;
+    text-decoration-style: solid;
+    color: azure; 
+    font-size: 300%;
+}
+h2{
+    text-align: left;
+    text-decoration-style: solid;
+    color: rgb(236, 192, 109); 
+    font-size: 150%;
+}
+button{
+    background:yellow;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: -30px ;
+    text-transform: uppercase;
+    margin-left: 15px;
+
+}
+.btn a{
+    text-decoration: none;
+    color: black;
+}
+button:hover{
+    cursor: pointer;
+    color: red;
+}
+a:hover{
+    color:orange;
+}
