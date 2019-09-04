@@ -1,9 +1,9 @@
 body{
     margin: 0%;
     padding: 0%;
-    background:url("../img/images8.jpg") ;
+    background:url(../img/guitar2.jfif);
     background-repeat: no-repeat;
-    background-size: 230%;
+    background-size: 100%;
 }
 .img{
     text-align: center;
@@ -16,6 +16,7 @@ h1{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     text-decoration: underline;
+    color: white;
 }
 h3{
     text-align: center;
@@ -37,6 +38,7 @@ h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     text-decoration: underline;
+    color: white;
 }
 .container{
     width: 100%;

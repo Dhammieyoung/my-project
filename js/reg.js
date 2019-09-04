@@ -17,7 +17,8 @@
    const db=firebase.firestore();
 
    //create a collection and empty document and save the instance docRef variable
-   const docRef=db.doc("register/account");
+   //const docRef=db.doc("register/account");
+   const docRef=db.collection("user").doc("phone");
    const save = document.getElementById("save");
 
    //declared this global variable so they can be accessed by all funtions
