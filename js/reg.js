@@ -11,64 +11,96 @@
   };
    // Initialize Firebase
    firebase.initializeApp(firebaseConfig);
-   console.log("firebaseloaded");
-
-   //initialize firestore database and save the instance to db variable
-   const db=firebase.firestore();
-
-   //create a collection and empty document and save the instance docRef variable
-   //const docRef=db.doc("register/account");
-   const docRef=db.collection("user").doc("phone");
-   const save = document.getElementById("save");
-
-   //declared this global variable so they can be accessed by all funtions
-   let Sname,Lname,Email,Phone,Uname,Pass,CPass;
-   const date= Date.now();
-   save.addEventListener("click", ()=>{
-        let Sname =document.getElementById("Surname").value;
-        let Lname =document.getElementById("Lastname").value;
-        let Email =document.getElementById("Email").value;
-        let Phone =document.getElementById("Number").value;
-        let Uname =document.getElementById("Username").value;
-        let Pass = document.getElementById("Password").value;
-        let CPass = document.getElementById("CPassword").value;
-
-
-        if (!Sname.match(/^[a-zA-Z]+$/)){
-            alert ("Input your Surname")
-        }
-        else if (!Lname.match(/^[a-zA-Z]+$/)){
-            alert ("Input your Last Name")
-        }
-        else if (!Email.includes("@")) {
-            alert ("Input your Email ")
-        }
-        else if (!Phone.match(/^[0-9]+$/)||Phone.length < 11 || Phone.length > 11) {
-            alert ("Invalid Phone Number")
-        }
-        else if (!Uname.match(/^[a-zA-Z0-9]+$/)){
-            alert ("Input your Username")
-        }
-        else if (!Pass.match(/^[a-zA-Z0-9]+$/)||Pass.length < 5) {
-            alert("Input your Password")
-        }
-        else if (!CPass.match(Pass)){
-            alert ("Invalid confirm password")
-        }
-        else {
-            alert ("Registred Successfully");
-        docRef.set({
-          Surname: Sname,
-          Lastname:Lname,
-          Email: Email,
-          Number: Phone,
-          Password: Pass,
-          Comfirmpassword: CPass
-
-    })
-    .then(function(){console.log("registrated successfully");
-})
-    .catch(function(error){console.log("Got an error:"+error);
-});
-}
-   });
+   console.log("firebase loaded");
+   const db= firebase.firestore();
+   const firestore = firebase.firestore();
+   let save = document.getElementById('submitData');
+   
+ 
+ 
+  // const firestore = firebase.firestore();
+ 
+  let Container, SendingLayout, SuccessLayout, FailedLayout;
+ 
+  Container = document.getElementById("Container");
+  SendingLayout = document.getElementById("SendingLayout");
+  SuccessLayout = document.getElementById("SuccessLayout");
+  FailedLayout = document.getElementById("FailedLayout");
+  
+  SendingLayout.style.display = "none";
+  SuccessLayout.style.display = "none";
+  FailedLayout.style.display = "none";
+ 
+ let Sname, Lname, Email, Phone, Uname, Pass, CPass;
+  const submitData = document.getElementById("SubmitData");
+ SubmitData.addEventListener("click", () => {
+     Sname =document.getElementById("Surname").value;
+     Lname =document.getElementById("Lastname").value;
+     Email =document.getElementById("Email").value;
+     Phone =document.getElementById("Number").value;
+     Uname =document.getElementById("Username").value;
+     Pass =document.getElementById("Password").value;
+     CPass =document.getElementById("CPassword").value;
+   
+     if (!Sname.match(/^[a-zA-Z]+$/)){
+         alert ("Enter Your  Surname")
+         
+     }
+     else if (!Lname.match(/^[a-zA-Z]+$/)){
+         alert ("Enter Your  Lastname")
+         
+     }
+     else if (!Email.includes("@")) {
+         alert ("Invalid Email ")
+         
+     }
+     else if (!Phone.match(/^[0-9]+$/)||Phone.length < 11 || Phone.length > 11) {
+         alert ("Incorrect Phone Number")
+         
+     }
+     else if (!Uname.match(/^[a-zA-Z]+$/)){
+         alert ("input UserName")
+         SendData()
+     }
+     else if (!Pass.match(/^[a-zA-Z-0-9]+$/)){
+         alert("Enter your Password")
+         SendData()
+     }
+     else if (!CPass.match(Pass)){
+         alert ("Incorrect Comfirm Password")
+         
+     }
+     else{
+         SendData()
+     }
+     
+ });
+ 
+ const SendData = () => {
+     Container.style.display = "none";
+     SendingLayout.style.display = "block";
+     SendToDataBase();
+ };
+ 
+ const SendToDataBase = () => {
+     let docRef = db.collection("Container").doc(Phone);
+     docRef.set({
+     Surname: Sname,
+     Lastname: Lname,
+     Email: Email,
+     Phone: Phone,
+     Username: Uname,
+     Password: Pass,
+     CPassword: CPass 
+     })
+     .then(function(){
+         SendingLayout.style.display = "none";
+         SuccessLayout.style.display = "block";
+         console.log("Successfully Saved");
+     })
+     .catch(function(error){
+         Container.style.display = "block";
+         FailedLayout.style.display = "block";
+         console.log("Got an error:",error);
+     });
+ };

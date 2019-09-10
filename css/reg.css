@@ -25,7 +25,7 @@ h3{
     color: whitesmoke;
    
 }
-.container{
+.dhammie{
     text-align: center;
 }
 ::placeholder{
@@ -65,3 +65,19 @@ button:hover{
     cursor: pointer;
     color: white;
 }
+.one{
+    margin-left: 40%;
+}
+.two{
+    margin-left: 40%;
+}
+.three{
+    margin-left: 40%;
+}
+h6{
+    font-size: 150%;
+    text-align: center;
+    margin-left: 25px;
+    margin-top: 5%;
+    color: whitesmoke;
+

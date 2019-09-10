@@ -10,7 +10,8 @@
 <body>
     <h1>sign up</h1>
     <h2>please kindly sign up</h2>
-    <div class="container">
+    <div id="Container">
+    <div class="dhammie">
         <div class="main">
                 <input type="text" id="Surname" name="Surname" class="input" placeholder="Enter Your Surname"><br><br>
 
@@ -34,7 +35,7 @@
              </form>
             </div>
                    <div class="btn">
-                       <button type="button" id="save" >OK</button>
+                       <button type="button" id="SubmitData" >Sign Up</button>
                    </div>
             </div>
         </div>
@@ -45,7 +46,22 @@
         </form>
     </div>
 </div>
+</div>
 
+<div id="SendingLayout">
+    <h6>please wait...</h6>
+    <img src="../img/preloader.gif" height="20%" width="20%" class="one">
+</div>
+
+<div id="SuccessLayout">
+    <h6>congratulation, Registration Successful</h6>
+    <img src="../img/great.png" height="20%" width="20%" class="two">
+</div>
+
+<div id="FailedLayout">
+    <h6>Registration failed, please try again</h6>
+    <img src="../img/failed.jpg" height="20%" width="20%" class="three">
+</div>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
