@@ -20,7 +20,7 @@
  
   // const firestore = firebase.firestore();
  
-  let Container, SendingLayout, SuccessLayout, FailedLayout;
+  let Container, SendingLayout, SuccessLayout, login, FailedLayout;
  
   Container = document.getElementById("Container");
   SendingLayout = document.getElementById("SendingLayout");
@@ -64,17 +64,25 @@
      }
      else if (!Pass.match(/^[a-zA-Z-0-9]+$/)){
          alert("Enter your Password")
-         SendData()
+        
      }
      else if (!CPass.match(Pass)){
          alert ("Incorrect Comfirm Password")
          
      }
      else{
-         SendData()
-     }
+        firebase.auth().createUserWithEmailAndPassword(Email, Pass).then(function(){
+            SendData()
+        }).catch(function(error){
+            //Handle errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log("error:" + error);
+            // ...
+        
+     });
      
- });
+ }})
  
  const SendData = () => {
      Container.style.display = "none";
@@ -100,7 +108,13 @@
      })
      .catch(function(error){
          Container.style.display = "block";
+         console.log("error", +error);
          FailedLayout.style.display = "block";
-         console.log("Got an error:",error);
+        // console.log("Got an error:",error);
      });
+     //initialze loginpage and send the user there
+     const login = document.getElementById("login");
+     login.addEventListener('click', ()=>{
+         window.location = "login.html";
+     })
  };
